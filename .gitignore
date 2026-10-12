@@ -1,0 +1,10 @@
+/target/
+/test-roms/
+/dist/
+/.web-build-*/
+*.sav
+*.sav.*.tmp
+*.ppm
+*.wav
+__pycache__/
+/conformance-results.json

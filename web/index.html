@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <meta name="description" content="Semulate | An NES emulator made with Rust.">
+  <title>semulate</title>
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <h1>semulate</h1>
+    <section class="console" aria-label="NES emulator">
+      <div class="screen-area">
+        <canvas id="screen" width="256" height="240" tabindex="0" aria-label="Game screen. Arrow keys to move, Z for A, X for B, Enter to start."></canvas>
+        <div class="screen-cover" id="idle-screen"><p id="ready-hint">Loading emulator…</p></div>
+        <div class="screen-cover" id="pause-screen" hidden><button id="resume">Resume</button></div>
+        <div class="screen-cover" id="drop-cover" hidden>Drop a .nes file</div>
+      </div>
+      <p id="game-title" class="game-title">No game loaded</p>
+      <div class="toolbar">
+        <button id="play-pause" disabled>Play</button>
+        <button id="reset" disabled>Reset</button>
+        <button id="sound" aria-pressed="true"><span>Sound on</span></button>
+        <input id="volume" aria-label="Volume" type="range" min="0" max="100" value="65">
+        <button id="fullscreen">Fullscreen</button>
+      </div>
+      <div class="touch-controls" id="touch-controls" hidden aria-label="Touch controller">
+        <div class="dpad">
+          <button data-button="16" class="up" aria-label="Up">↑</button>
+          <button data-button="64" class="left" aria-label="Left">←</button>
+          <button data-button="128" class="right" aria-label="Right">→</button>
+          <button data-button="32" class="down" aria-label="Down">↓</button>
+        </div>
+        <div class="middle-buttons"><button data-button="4">Select</button><button data-button="8">Start</button></div>
+        <div class="action-buttons"><button data-button="2">B</button><button data-button="1">A</button></div>
+      </div>
+    </section>
+    <div id="notice" class="notice" role="status" hidden><span id="notice-text"></span><button id="dismiss-notice" aria-label="Dismiss message">×</button></div>
+    <section class="homebrews" aria-labelledby="homebrews-heading">
+      <h2 id="homebrews-heading">Homebrews (not mine! see bottom of the page for credit)</h2>
+      <div id="game-list" class="game-list"><p>Loading games…</p></div>
+      <div id="import-card" class="import-row"><button id="import-rom" disabled>Import ROM</button><span>or drop a .nes file onto the page (note that right now only mappers 0, 1, 2, 3, 4, 7, 218 are supported. i'll add more support soon promise ;)</span></div>
+      <input id="rom-file" type="file" accept=".nes" hidden>
+    </section>
+    <section class="controls" aria-labelledby="controls-heading">
+      <h2 id="controls-heading">Controls</h2>
+      <dl class="key-guide">
+        <div><dt>Move</dt><dd>Arrow keys</dd></div>
+        <div><dt>A / B</dt><dd><kbd>Z</kbd> / <kbd>X</kbd></dd></div>
+        <div><dt>Start / Select</dt><dd><kbd>Enter</kbd> / <kbd>Shift</kbd></dd></div>
+        <div><dt>Pause</dt><dd><kbd>Space</kbd></dd></div>
+        <div><dt>Reset / Mute</dt><dd><kbd>R</kbd> / <kbd>M</kbd></dd></div>
+        <div><dt>Fullscreen</dt><dd><kbd>F</kbd></dd></div>
+      </dl>
+      <div class="input-options"><label><input id="touch-toggle" type="checkbox"> Touch controls</label><span id="gamepad-status">No gamepad connected</span></div>
+      <details class="saves"><summary>Save files</summary><p id="save-info">Battery saves are stored in this browser.</p><div class="save-actions"><button id="export-save" disabled>Export .sav</button><button id="import-save" disabled>Import .sav</button></div></details>
+      <input id="save-file" type="file" accept=".sav" hidden>
+    </section>
+    <section class="controls" aria-labelledby="credits-heading">
+      <h2 id="credits-heading">Credits</h2>
+      <p><a href="https://drludos.itch.io/rooftop-ninja">RooftopNinja</a><br>
+        <a href="https://ske2004.itch.io/mantle">The Legend of Tenna (NES)</a></p>
+    </section>
+  </main>
+  <noscript><p>Enable JavaScript to run the emulator.</p></noscript>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
