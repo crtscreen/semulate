@@ -50,19 +50,39 @@ You can clone this repo and build the project yourself.
 
 ### Browser
 
-Install Rust, Python 3.11 or later, and te WebAssembly target:
+Install Rust, Python 3.11 or later, and the WebAssembly target:
 
-```sh
-rustup target add wasm32-unknown-unknown
-python3 tools/build_web.py
-python3 -m http.server 8080 --directory dist
-```
+<details>
+  <summary>Linux</summary>
+  
+  ```sh
+  rustup target add wasm32-unknown-unknown
+  python3 tools/build_web.py
+  python3 -m http.server 8080 --directory dist
+  ```
+  Then go to your web browser of choice and open http://localhost:8080. You can edit the frontend files in `web/`, if you wish. Make sure to rebuild after doing so:
 
-Then go to your web browser of choice and open http://localhost:8080. You can edit the frontend files in `web/`, if you wish. Make sure to rebuild after doing so:
+  ```sh
+  python3 tools/build_web.py
+  ```
 
-```sh
-python3 tools/build_web.py
-```
+</details>
+
+<details>
+  <summary>Windows</summary>
+
+  ```sh
+  rustup target add wasm32-unknown-unknown
+  python tools/build_web.py
+  python -m http.server 8080 --directory dist
+  ```
+  Then go to your web browser of choice and open http://localhost:8080. You can edit the frontend files in `web/`, if you wish. Make sure to rebuild after doing so:
+
+  ```sh
+  python tools/build_web.py
+  ```
+
+</details>
 
 ### Desktop
 
