@@ -2,6 +2,8 @@
 
 A NES emulator written in Rust. I made this for [Crescent](https://crescent.hackclub.com/), as part of [HackClub](https://hackclub.com/).
 
+[Play the demo!](https://crtscreen.github.io/semulate/)
+
 ![semulate web demo](images/screenshot.png)
 
 ## Using the demo
